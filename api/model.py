@@ -14,7 +14,7 @@ class user_form(BaseModel):
 
 class success_create_process(BaseModel):
     id: UUID
-    proposed_positions: str
+    proposed_positions: List[str]
 
 
 class process_response(BaseModel):

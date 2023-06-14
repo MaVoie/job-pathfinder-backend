@@ -40,7 +40,5 @@ def initialize_process(customer_details: user_form):
 
 
 def get_process(process_id):
-    logging.info("dupa")
     by_id = process_repository.get_by_id(process_id)
-
     return by_id
