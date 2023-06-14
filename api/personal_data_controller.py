@@ -14,7 +14,7 @@ gpt_service = GptService()
 @router.post("/processes", status_code=status.HTTP_202_ACCEPTED)
 async def apply_customer_details(customer_details: user_form) -> success_create_process:
     process = ProcessService.initialize_process(customer_details)
-    return success_create_process(id=process.id, proposed_positions=process.proposed_positions)
+    return success_create_process(process_id=process.id, proposed_positions=process.proposed_positions)
 
 
 @router.get("/processes/{process_id}", status_code=status.HTTP_200_OK)

@@ -11,3 +11,4 @@ class Process(pydantic.BaseModel):
     proposed_positions: List[str]
     selected_position: Optional[str] = None
     covered_letters: Optional[List[str]] = None
+    interview_questions: Optional[List[str]] = None
