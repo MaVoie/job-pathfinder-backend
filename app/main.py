@@ -1,7 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from api import controller
 
 app = FastAPI()
+app.include_router(controller.router)
 
 origins = ['*']
 

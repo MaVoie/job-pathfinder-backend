@@ -1,3 +1,8 @@
+## Dependencies
+```bash
+pip install -r requirements.txt
+```
+
 # Run
 
 Local development run command:
