@@ -1,9 +1,8 @@
 import pydantic as pydantic
-
-from model.user import User
+from uuid import UUID
 
 
 class Process(pydantic.BaseModel):
-    id: str
-    userId: str
+    id: UUID
+    userId: UUID
     custom_msg: str

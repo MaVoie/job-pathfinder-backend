@@ -1,0 +1,12 @@
+### create a new customer process
+POST http://localhost:8000/processes
+Content-Type: application/json
+
+{
+  "name": "John",
+  "surname": "Smith",
+  "email": "john.smith@post.com",
+  "location": "London",
+  "customerMessage": "I am John from France and I like football. As a kid I dreamed to be a football player"
+}
+
