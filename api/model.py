@@ -1,5 +1,9 @@
+from typing import List
+
 from pydantic import BaseModel
 from uuid import UUID
+
+
 class user_form(BaseModel):
     name: str
     surname: str
@@ -10,6 +14,7 @@ class user_form(BaseModel):
 
 class success_create_process(BaseModel):
     id: UUID
+    proposed_positions: str
 
 
 class process_response(BaseModel):

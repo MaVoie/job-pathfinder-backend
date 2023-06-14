@@ -6,8 +6,9 @@ from model.process import Process
 from model.user import User
 import repository.process_repository as process_repository
 import repository.user_repository as user_repository
+from service.gpt_service import GptService
 
-
+gpt_service = GptService()
 def create_user_based_on_customer_details(customer_form: user_form):
     uuid = uuid4()
     return User(
@@ -19,20 +20,23 @@ def create_user_based_on_customer_details(customer_form: user_form):
     )
 
 
-def createProcess(newCustomerId, param):
+def createProcess(newCustomerId, param, generated_positions):
     uuid = uuid4()
     return Process(id=uuid,
                    userId=newCustomerId,
-                   custom_msg=param)
+                   custom_msg=param,
+                   proposed_positions=generated_positions
+                   )
 
 
-def initalize_process(customer_details: user_form):
+def initialize_process(customer_details: user_form):
     user = create_user_based_on_customer_details(customer_details)
-    process = createProcess(user.id, customer_details.customer_message)
+    generated_positions = gpt_service.generate_positions(customer_details.customer_message)
+    process = createProcess(user.id, customer_details.customer_message, generated_positions)
 
     user_repository.save(user)
     process_repository.save(process)
-    return process.id
+    return process
 
 
 def get_process(process_id):
