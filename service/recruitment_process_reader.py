@@ -14,5 +14,9 @@ class RecruitmentProcessReader:
                 email="hej@hej.com"
             ),
             id="1",
-            custom_msg="Find a job for me!"
+            custom_msg="I'm 20 years old. Need to find a job as java junior developer. Do not have any experience, but "
+                       "I graduated from Warsaw University of Technology with bachelor's degree from Java 17. I have "
+                       " Oracle"
+                       " Certificate from java 17 as well.",
+            selected_positions=["Java Developer"]
         )
