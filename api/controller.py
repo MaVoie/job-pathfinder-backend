@@ -38,4 +38,5 @@ async def generate_cover_letter(process_id: UUID) -> interview_questions:
              response_model=str,
              status_code=status.HTTP_202_ACCEPTED)
 async def generate_cover_letter(process_id: UUID, body: QuestionAnswerBody) -> interview_question_evaluation:
-    return interview_question_evaluation(validate_interview_question(process_id, body.question, body.answer))
+    response = validate_interview_question(process_id, body.question, body.answer)
+    return interview_question_evaluation(evaluation=response)
