@@ -5,7 +5,7 @@ from click import UUID
 
 import repository.process_repository as process_repository
 import repository.user_repository as user_repository
-from api.model import user_form
+from job_api.model import user_form
 from model.process import Process
 from model.user import User
 from service.gpt_service import GptService

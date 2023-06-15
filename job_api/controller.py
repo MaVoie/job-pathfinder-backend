@@ -35,7 +35,6 @@ async def generate_cover_letter(process_id: UUID) -> interview_questions:
 
 
 @router.post("/processes/{process_id}/interview-questions-answer",
-             response_model=str,
              status_code=status.HTTP_202_ACCEPTED)
 async def generate_cover_letter(process_id: UUID, body: QuestionAnswerBody) -> interview_question_evaluation:
     response = validate_interview_question(process_id, body.question, body.answer)

@@ -4,7 +4,7 @@ from uuid import UUID
 from fastapi import APIRouter, status
 
 import service.process_service as ProcessService
-from api.model import user_form, success_create_process, process_response
+from job_api.model import user_form, success_create_process, process_response
 from service.gpt_service import GptService
 
 router = APIRouter()
