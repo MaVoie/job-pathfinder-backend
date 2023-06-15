@@ -1,14 +1,18 @@
 # write to database
 from uuid import uuid4
-import logging
+
+from click import UUID
+
+import repository.process_repository as process_repository
+import repository.user_repository as user_repository
 from api.model import user_form
 from model.process import Process
 from model.user import User
-import repository.process_repository as process_repository
-import repository.user_repository as user_repository
 from service.gpt_service import GptService
 
 gpt_service = GptService()
+
+
 def create_user_based_on_customer_details(customer_form: user_form):
     uuid = uuid4()
     return User(
@@ -39,8 +43,19 @@ def initialize_process(customer_details: user_form):
     return process
 
 
-def get_process(process_id):
-    logging.info("dupa")
-    by_id = process_repository.get_by_id(process_id)
+def generate_interview_questions(process_id: UUID):
+    process = get_process(process_id)
+    questions = gpt_service.generate_interview_questions(process)
+    process.interview_questions = questions
+    process_repository.save(process)
+    return questions
 
+
+def validate_interview_question(process_id: UUID, question: str, answer: str):
+    process = get_process(process_id)
+    return gpt_service.validate_interview_question_answer(process, question, answer)
+
+
+def get_process(process_id):
+    by_id = process_repository.get_by_id(process_id)
     return by_id
