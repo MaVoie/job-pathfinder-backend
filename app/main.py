@@ -1,13 +1,13 @@
-import sys
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from api import controller, personal_data_controller as personal_controller
 
-sys.path.append('./../api')
+from api.controller import router as controller_router
+from api.personal_data_controller import router as personal_controller_router
+
+
 app = FastAPI()
-app.include_router(controller.router)
-app.include_router(personal_controller.router)
+app.include_router(controller_router)
+app.include_router(personal_controller_router)
 
 origins = ['*']
 
